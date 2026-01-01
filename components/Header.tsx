@@ -11,20 +11,18 @@ const pathname = usePathname();
         <header>
             <div className="main-container inner">
                 <Link href="/">
-                    <Image src="/logo.svg" alt="Coinpulse logo" width={132} height={40}>
-
-                    </Image>
-                    <nav>
-                        <Link href="/" className={cn("nav-link", {
-                            "is active": pathname === "/",
-                            "is home": true
-                        })}>Home</Link>
-                        <p>Search Modal</p>
-                        <Link href="/coins" className={cn("nav-link", {
-                            "is active": pathname === "/coins",
-                        })}>All Coins</Link>
-                    </nav>
+                    <Image src="/logo.svg" alt="Coinpulse logo" width={132} height={40} />
                 </Link>
+                <nav>
+                    <Link href="/" className={cn("nav-link", {
+                        "is active": pathname === "/",
+                        "is home": true
+                    })}>Home</Link>
+                    <p>Search Modal</p>
+                    <Link href="/coins" className={cn("nav-link", {
+                        "is active": pathname === "/coins",
+                    })}>All Coins</Link>
+                </nav>
             </div>
 
         </header>
