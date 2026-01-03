@@ -152,15 +152,15 @@
 
 @layer components {
   .container {
-    @apply px-4 sm:px-6 mx-auto max-w-360;
+    @apply mx-auto max-w-360 px-4 sm:px-6;
   }
 
   .main-container {
-    @apply py-6 md:py-12 mx-auto px-4 sm:px-6 max-w-360 w-full space-y-6 md:space-y-6;
+    @apply mx-auto w-full max-w-360 space-y-6 px-4 py-6 sm:px-6 md:space-y-6 md:py-12;
   }
 
   .badge {
-    @apply font-medium mt-2 h-fit py-1 flex items-center gap-1;
+    @apply mt-2 flex h-fit items-center gap-1 py-1 font-medium;
   }
 
   .badge-up {
@@ -176,10 +176,10 @@
   }
 
   header {
-    @apply border-b border-dark-400 h-20;
+    @apply border-dark-400 h-20 border-b;
 
     .inner {
-      @apply flex justify-between items-center h-full;
+      @apply flex h-full items-center justify-between;
 
       a {
         @apply mb-0;
@@ -189,7 +189,7 @@
         @apply flex h-full items-center;
 
         .nav-link {
-          @apply px-6 py-5 flex items-center transition-all hover:text-white font-medium h-full text-purple-100 cursor-pointer;
+          @apply flex h-full cursor-pointer items-center px-6 py-5 font-medium text-purple-100 transition-all hover:text-white;
         }
 
         .nav-link.is-active {
@@ -204,41 +204,41 @@
   }
 
   #candlestick-chart {
-    @apply p-3 mt-5 rounded-lg bg-dark-500;
+    @apply bg-dark-500 mt-5 rounded-lg p-3;
 
     .chart-header {
-      @apply flex flex-col gap-3 xl:flex-row xl:items-center mb-4 font-semibold text-[#e6eef8] text-[20px];
+      @apply mb-4 flex flex-col gap-3 text-[20px] font-semibold text-[#e6eef8] xl:flex-row xl:items-center;
     }
 
     .button-group {
-      @apply flex gap-1 xl:gap-2 items-center;
+      @apply flex items-center gap-1 xl:gap-2;
     }
 
     .config-button {
-      @apply rounded-sm border-0 cursor-pointer px-2.5 py-2 text-xs xl:text-sm text-purple-100 hover:bg-dark-400 hover:text-white;
+      @apply hover:bg-dark-400 cursor-pointer rounded-sm border-0 px-2.5 py-2 text-xs text-purple-100 hover:text-white xl:text-sm;
     }
 
     .config-button-active {
-      @apply rounded-sm px-2.5 py-1.5 border-0 cursor-pointer text-sm text-gray-900 bg-green-500;
+      @apply cursor-pointer rounded-sm border-0 bg-green-500 px-2.5 py-1.5 text-sm text-gray-900;
     }
 
     .chart {
-      @apply w-full min-h-50;
+      @apply min-h-50 w-full;
     }
   }
 
   #coin-card {
-    @apply bg-dark-500 hover:bg-dark-400/50 transition-all rounded-lg p-5 border border-purple-600/20 hover:border-purple-600/50 cursor-pointer h-fit;
+    @apply bg-dark-500 hover:bg-dark-400/50 h-fit cursor-pointer rounded-lg border border-purple-600/20 p-5 transition-all hover:border-purple-600/50;
 
     .header {
-      @apply flex gap-3 mb-4;
+      @apply mb-4 flex gap-3;
 
       img {
         @apply size-12 rounded-full;
       }
 
       h3 {
-        @apply font-semibold text-lg;
+        @apply text-lg font-semibold;
       }
 
       p {
@@ -247,7 +247,7 @@
     }
 
     .price-row {
-      @apply flex justify-between items-center mb-5;
+      @apply mb-5 flex items-center justify-between;
 
       .price {
         @apply text-xl font-bold;
@@ -262,7 +262,7 @@
       @apply space-y-3;
 
       .stat-row {
-        @apply flex gap-1 justify-between;
+        @apply flex justify-between gap-1;
 
         .label {
           @apply text-purple-100;
@@ -276,10 +276,10 @@
   }
 
   #categories {
-    @apply pt-8 mt-5 w-full bg-dark-500 rounded-xl overflow-hidden;
+    @apply bg-dark-500 mt-5 w-full overflow-hidden rounded-xl pt-8;
 
     h4 {
-      @apply text-xl md:text-2xl font-semibold mb-2 pl-5;
+      @apply mb-2 pl-5 text-xl font-semibold md:text-2xl;
     }
 
     .category-cell {
@@ -287,7 +287,7 @@
     }
 
     .top-gainers-cell {
-      @apply flex gap-1 mr-5;
+      @apply mr-5 flex gap-1;
 
       img {
         @apply rounded-full py-2;
@@ -299,7 +299,7 @@
     }
 
     .change-cell {
-      @apply flex flex-1 gap-1 items-center pl-2 text-center font-medium;
+      @apply flex flex-1 items-center gap-1 pl-2 text-center font-medium;
     }
 
     .market-cap-cell {
@@ -312,10 +312,10 @@
   }
 
   #trending-coins {
-    @apply w-full flex flex-col justify-center h-full py-4 bg-dark-500 rounded-xl;
+    @apply bg-dark-500 flex h-full w-full flex-col justify-center rounded-xl py-4;
 
     h4 {
-      @apply text-xl md:text-2xl font-semibold mb-2 px-5;
+      @apply mb-2 px-5 text-xl font-semibold md:text-2xl;
     }
 
     .trending-coins-table {
@@ -325,10 +325,10 @@
         @apply font-bold;
 
         a {
-          @apply pl-1 md:pl-2 py-1 md:py-2 xl:py-1 flex items-center gap-2 md:gap-3;
+          @apply flex items-center gap-2 py-1 pl-1 md:gap-3 md:py-2 md:pl-2 xl:py-1;
 
           img {
-            @apply rounded-full size-8 md:size-9;
+            @apply size-8 rounded-full md:size-9;
           }
 
           p {
@@ -338,28 +338,28 @@
       }
 
       .change-cell {
-        @apply font-medium py-4 pr-3 md:pr-5;
+        @apply py-4 pr-3 font-medium md:pr-5;
       }
 
       .price-cell {
-        @apply font-bold pr-5 text-sm max-w-full truncate;
+        @apply max-w-full truncate pr-5 text-sm font-bold;
       }
 
       .price-change {
-        @apply flex gap-1 items-center text-sm font-medium;
+        @apply flex items-center gap-1 text-sm font-medium;
       }
     }
   }
 
   .home-grid {
-    @apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-start lg:items-center gap-6;
+    @apply grid grid-cols-1 items-start gap-6 lg:grid-cols-2 lg:items-center xl:grid-cols-3;
   }
 
   #categories-fallback {
-    @apply pt-8 mt-5 w-full bg-dark-500 rounded-xl overflow-hidden;
+    @apply bg-dark-500 mt-5 w-full overflow-hidden rounded-xl pt-8;
 
     h4 {
-      @apply text-xl md:text-2xl font-semibold mb-2 pl-5;
+      @apply mb-2 pl-5 text-xl font-semibold md:text-2xl;
     }
 
     .category-cell {
@@ -367,7 +367,7 @@
     }
 
     .top-gainers-cell {
-      @apply flex gap-1 mr-5;
+      @apply mr-5 flex gap-1;
     }
 
     .change-header-cell {
@@ -375,7 +375,7 @@
     }
 
     .change-cell {
-      @apply flex gap-1 items-center pl-2 text-center font-medium;
+      @apply flex items-center gap-1 pl-2 text-center font-medium;
     }
 
     .market-cap-cell {
@@ -412,14 +412,14 @@
   }
 
   #coin-overview-fallback {
-    @apply w-full h-full xl:col-span-2 px-2 bg-dark-500 rounded-xl;
+    @apply bg-dark-500 h-full w-full rounded-xl px-2 xl:col-span-2;
 
     .header {
-      @apply flex-1 mb-2 flex gap-2 md:gap-3;
+      @apply mb-2 flex flex-1 gap-2 md:gap-3;
     }
 
     .header-image {
-      @apply w-10 h-10 md:w-14 md:h-14 rounded-full;
+      @apply h-10 w-10 rounded-full md:h-14 md:w-14;
     }
 
     .info {
@@ -435,7 +435,7 @@
     }
 
     .period-button-skeleton {
-      @apply h-7 w-9 md:w-10 rounded-sm;
+      @apply h-7 w-9 rounded-sm md:w-10;
     }
 
     .chart {
@@ -448,10 +448,10 @@
   }
 
   #trending-coins-fallback {
-    @apply w-full flex flex-col justify-center h-full py-4 bg-dark-500 rounded-xl;
+    @apply bg-dark-500 flex h-full w-full flex-col justify-center rounded-xl py-4;
 
     h4 {
-      @apply text-xl md:text-2xl font-semibold mb-2 px-5;
+      @apply mb-2 px-5 text-xl font-semibold md:text-2xl;
     }
 
     .trending-coins-table {
@@ -462,11 +462,11 @@
       }
 
       .name-link {
-        @apply pl-1 md:pl-2 py-1 md:py-2 xl:py-1 flex items-center gap-2 md:gap-3;
+        @apply flex items-center gap-2 py-1 pl-1 md:gap-3 md:py-2 md:pl-2 xl:py-1;
       }
 
       .name-image {
-        @apply rounded-full size-8 md:size-9;
+        @apply size-8 rounded-full md:size-9;
       }
 
       .name-line {
@@ -474,15 +474,15 @@
       }
 
       .change-cell {
-        @apply font-medium py-4 pr-3 md:pr-5;
+        @apply py-4 pr-3 font-medium md:pr-5;
       }
 
       .price-cell {
-        @apply font-bold pr-5 text-sm max-w-full truncate;
+        @apply max-w-full truncate pr-5 text-sm font-bold;
       }
 
       .price-change {
-        @apply flex gap-1 items-center text-sm font-medium;
+        @apply flex items-center gap-1 text-sm font-medium;
       }
     }
 
@@ -500,7 +500,7 @@
   }
 
   #coin-details-page {
-    @apply py-12 px-4 sm:px-6 mx-auto max-w-360 size-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center gap-6 xl:gap-10 justify-center;
+    @apply mx-auto grid size-full max-w-360 grid-cols-1 items-center justify-center gap-6 px-4 py-12 sm:px-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-10;
 
     .primary {
       @apply size-full xl:col-span-2;
@@ -511,18 +511,18 @@
     }
 
     .exchange-section {
-      @apply w-full mt-8 space-y-4;
+      @apply mt-8 w-full space-y-4;
 
       h4 {
-        @apply text-xl md:text-2xl font-semibold mb-2;
+        @apply mb-2 text-xl font-semibold md:text-2xl;
       }
     }
 
     .exchange-table {
-      @apply bg-dark-500 rounded-xl overflow-hidden mt-5;
+      @apply bg-dark-500 mt-5 overflow-hidden rounded-xl;
 
       .exchange-name {
-        @apply text-green-500 font-bold;
+        @apply font-bold text-green-500;
 
         a {
           @apply absolute inset-0 z-10;
@@ -530,10 +530,10 @@
       }
 
       .pair {
-        @apply font-medium h-full flex gap-1 py-4 pr-5 space-x-2;
+        @apply flex h-full gap-1 space-x-2 py-4 pr-5 font-medium;
 
         p {
-          @apply truncate max-w-20 md:max-w-30 h-full;
+          @apply h-full max-w-20 truncate md:max-w-30;
         }
       }
 
@@ -547,24 +547,24 @@
     }
 
     .details {
-      @apply w-full mt-8 space-y-4;
+      @apply mt-8 w-full space-y-4;
 
       h4 {
-        @apply text-xl md:text-2xl font-semibold mb-2 pb-3;
+        @apply mb-2 pb-3 text-xl font-semibold md:text-2xl;
       }
 
       .details-grid {
-        @apply rounded-lg grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-3 sm:gap-5;
+        @apply grid gap-3 rounded-lg sm:grid-cols-2 sm:gap-5 md:grid-cols-3 lg:grid-cols-2;
 
         li {
-          @apply text-base bg-dark-500 px-5 py-6 rounded-lg flex flex-col gap-3;
+          @apply bg-dark-500 flex flex-col gap-3 rounded-lg px-5 py-6 text-base;
 
           .label {
             @apply text-purple-100;
           }
 
           .link {
-            @apply flex items-center text-green-500 gap-1;
+            @apply flex items-center gap-1 text-green-500;
           }
         }
       }
@@ -572,10 +572,10 @@
   }
 
   #coins-page {
-    @apply py-12 px-4 sm:px-6 mx-auto max-w-360 size-full items-center gap-10 justify-center;
+    @apply mx-auto size-full max-w-360 items-center justify-center gap-10 px-4 py-12 sm:px-6;
 
     .content {
-      @apply flex flex-col w-full space-y-5;
+      @apply flex w-full flex-col space-y-5;
     }
 
     h4 {
@@ -583,10 +583,10 @@
     }
 
     .coins-table {
-      @apply bg-dark-500 rounded-xl max-h-fit overflow-hidden;
+      @apply bg-dark-500 max-h-fit overflow-hidden rounded-xl;
 
       .rank-cell {
-        @apply pl-5 max-w-20! py-5 font-medium text-purple-100;
+        @apply max-w-20! py-5 pl-5 font-medium text-purple-100;
 
         a {
           @apply absolute inset-0 z-10;
@@ -614,7 +614,7 @@
       }
 
       .change-value {
-        @apply flex gap-1 items-center font-medium;
+        @apply flex items-center gap-1 font-medium;
       }
 
       .market-cap-cell {
@@ -625,15 +625,15 @@
 
   #search-modal {
     .trigger {
-      @apply px-6 hover:bg-transparent! font-medium transition-all h-full cursor-pointer text-base text-purple-100 flex items-center gap-2;
+      @apply flex h-full cursor-pointer items-center gap-2 px-6 text-base font-medium text-purple-100 transition-all hover:bg-transparent!;
     }
 
     .kbd {
-      @apply pointer-events-none hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100;
+      @apply bg-muted pointer-events-none hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:inline-flex;
     }
 
     .dialog {
-      @apply bg-dark-400! max-w-sm sm:max-w-md md:max-w-2xl mx-auto;
+      @apply bg-dark-400! mx-auto max-w-sm sm:max-w-md md:max-w-2xl;
     }
 
     .cmd-input {
@@ -663,10 +663,10 @@
     }
 
     .search-item {
-      @apply grid grid-cols-4 gap-4 items-center justify-between data-[selected=true]:bg-dark-400 transition-all !cursor-pointer hover:bg-dark-400 py-3;
+      @apply data-[selected=true]:bg-dark-400 hover:bg-dark-400 grid !cursor-pointer grid-cols-4 items-center justify-between gap-4 py-3 transition-all;
 
       .coin-info {
-        @apply flex gap-4 items-center col-span-2;
+        @apply col-span-2 flex items-center gap-4;
 
         img {
           @apply size-9 rounded-full;
@@ -682,11 +682,11 @@
       }
 
       .coin-price {
-        @apply font-semibold text-sm lg:text-base;
+        @apply text-sm font-semibold lg:text-base;
       }
 
       .coin-change {
-        @apply flex gap-1 text-sm lg:text-base items-center font-medium;
+        @apply flex items-center gap-1 text-sm font-medium lg:text-base;
       }
     }
   }
@@ -699,49 +699,49 @@
     }
 
     .panel {
-      @apply space-y-2 bg-dark-500 px-5 py-7 rounded-lg;
+      @apply bg-dark-500 space-y-2 rounded-lg px-5 py-7;
     }
 
     .input-wrapper {
-      @apply bg-dark-400 h-12 w-full rounded-md flex items-center justify-between py-4 pr-4;
+      @apply bg-dark-400 flex h-12 w-full items-center justify-between rounded-md py-4 pr-4;
 
       .input {
-        @apply flex-1 text-lg! border-none font-medium bg-dark-400! focus-visible:ring-0 shadow-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+        @apply bg-dark-400! flex-1 [appearance:textfield] border-none text-lg! font-medium shadow-none focus-visible:ring-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none;
       }
 
       .coin-info {
         @apply flex items-center gap-1;
 
         p {
-          @apply font-semibold text-base text-purple-100;
+          @apply text-base font-semibold text-purple-100;
         }
       }
     }
 
     .divider {
-      @apply relative flex justify-center items-center my-4;
+      @apply relative my-4 flex items-center justify-center;
 
       .line {
-        @apply h-px z-10 w-full bg-dark-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+        @apply bg-dark-400 absolute top-1/2 left-1/2 z-10 h-px w-full -translate-x-1/2 -translate-y-1/2;
       }
 
       .icon {
-        @apply size-8 z-20 bg-dark-400 rounded-full p-2 text-green-500;
+        @apply bg-dark-400 z-20 size-8 rounded-full p-2 text-green-500;
       }
     }
 
     .output-wrapper {
-      @apply bg-dark-400 h-12 w-full rounded-md flex items-center justify-between py-4 pl-4;
+      @apply bg-dark-400 flex h-12 w-full items-center justify-between rounded-md py-4 pl-4;
 
       p {
         @apply text-base font-medium;
       }
 
       .select-trigger {
-        @apply w-fit! border-none! cursor-pointer! h-12! bg-dark-400! hover:bg-dark-400! focus-visible:ring-0!;
+        @apply bg-dark-400! hover:bg-dark-400! h-12! w-fit! cursor-pointer! border-none! focus-visible:ring-0!;
 
         .select-value {
-          @apply font-semibold! text-xs! text-purple-100!;
+          @apply text-xs! font-semibold! text-purple-100!;
         }
       }
 
@@ -749,7 +749,7 @@
         @apply bg-dark-400 max-h-125;
 
         .select-item {
-          @apply cursor-pointer hover:bg-dark-500!;
+          @apply hover:bg-dark-500! cursor-pointer;
         }
       }
     }
@@ -759,27 +759,27 @@
     @apply mt-8 w-full;
 
     .tabs-list {
-      @apply size-full! p-1! bg-transparent! border-b! border-dark-500! rounded-none!;
+      @apply border-dark-500! size-full! rounded-none! border-b! bg-transparent! p-1!;
     }
 
     .tabs-trigger {
-      @apply data-[state=active]:border-none! data-[state=active]:bg-transparent! flex justify-start! mb-0! py-2! text-lg! font-semibold! md:text-2xl!;
+      @apply mb-0! flex justify-start! py-2! text-lg! font-semibold! data-[state=active]:border-none! data-[state=active]:bg-transparent! md:text-2xl!;
     }
 
     .tabs-content {
-      @apply gap-4! mt-2! md:gap-5! sm:grid-cols-2! lg:grid-cols-1! grid!;
+      @apply mt-2! grid! gap-4! sm:grid-cols-2! md:gap-5! lg:grid-cols-1!;
     }
   }
 
   #coin-header {
-    @apply space-y-5 w-full;
+    @apply w-full space-y-5;
 
     h3 {
       @apply text-3xl font-medium;
     }
 
     .info {
-      @apply flex gap-3 items-center;
+      @apply flex items-center gap-3;
 
       img {
         @apply size-11.25 sm:size-12.5 xl:size-19.25;
@@ -790,46 +790,46 @@
       @apply flex gap-4;
 
       h1 {
-        @apply text-3xl sm:text-5xl xl:text-6xl font-semibold;
+        @apply text-3xl font-semibold sm:text-5xl xl:text-6xl;
       }
     }
 
     .stats {
-      @apply grid grid-cols-3 mt-8 gap-4 sm:gap-6 w-fit;
+      @apply mt-8 grid w-fit grid-cols-3 gap-4 sm:gap-6;
 
       li {
-        @apply text-base border-r last:border-none border-purple-600 flex flex-col gap-2;
+        @apply flex flex-col gap-2 border-r border-purple-600 text-base last:border-none;
 
         .label {
           @apply text-purple-100 max-sm:text-sm;
         }
 
         .value {
-          @apply flex gap-1 flex-1 items-end text-base font-medium;
+          @apply flex flex-1 items-end gap-1 text-base font-medium;
         }
       }
     }
   }
 
   #coin-overview {
-    @apply w-full h-full xl:col-span-2 px-2 bg-dark-500 rounded-xl;
+    @apply bg-dark-500 h-full w-full rounded-xl px-2 xl:col-span-2;
 
     .header {
-      @apply flex-1 mb-2 flex gap-2 md:gap-3;
+      @apply mb-2 flex flex-1 gap-2 md:gap-3;
 
       img {
-        @apply w-10 h-10 md:w-14 md:h-14;
+        @apply h-10 w-10 md:h-14 md:w-14;
       }
 
       .info {
         @apply flex flex-col;
 
         p {
-          @apply flex text-purple-100 text-xs md:text-sm w-fit;
+          @apply flex w-fit text-xs text-purple-100 md:text-sm;
         }
 
         h1 {
-          @apply text-xl md:text-2xl font-semibold;
+          @apply text-xl font-semibold md:text-2xl;
         }
       }
     }
@@ -868,11 +868,11 @@
       }
 
       .page-link {
-        @apply hover:bg-dark-400! rounded-sm text-base cursor-pointer;
+        @apply hover:bg-dark-400! cursor-pointer rounded-sm text-base;
       }
 
       .page-link-active {
-        @apply bg-green-500! text-dark-900 font-semibold;
+        @apply text-dark-900 bg-green-500! font-semibold;
       }
     }
   }
@@ -888,23 +888,23 @@
       @apply w-full;
 
       h4 {
-        @apply text-xl md:text-2xl font-semibold mb-2 mt-2 pl-2;
+        @apply mt-2 mb-2 pl-2 text-xl font-semibold md:text-2xl;
       }
     }
 
     .trades {
-      @apply w-full my-8 space-y-4;
+      @apply my-8 w-full space-y-4;
 
       h4 {
-        @apply text-xl md:text-2xl font-semibold mb-2;
+        @apply mb-2 text-xl font-semibold md:text-2xl;
       }
     }
 
     .trades-table {
-      @apply bg-dark-500 mt-5 rounded-xl overflow-hidden;
+      @apply bg-dark-500 mt-5 overflow-hidden rounded-xl;
 
       .price-cell {
-        @apply pl-5 py-5 font-medium;
+        @apply py-5 pl-5 font-medium;
       }
 
       .amount-cell {
