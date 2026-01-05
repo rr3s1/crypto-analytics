@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24512527-6d56-4c3d-b49b-1b4a47364e26" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/CandlestickChart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/constants.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CandlestickChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CandlestickChart.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/home/CoinOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/CoinOverview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/TrendingCoins.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/TrendingCoins.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/coingecko.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/coingecko.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="33" />
+    <option name="cachedIndexableFilesCount" value="37" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -105,6 +106,7 @@
       <workItem from="1767369653140" duration="3266000" />
       <workItem from="1767425183576" duration="2956000" />
       <workItem from="1767514105383" duration="2777000" />
+      <workItem from="1767597815046" duration="2626000" />
     </task>
     <servers />
   </component>

@@ -1,3 +1,5 @@
+'use server';
+
 import qs from 'query-string';
 
 // Retrieve environment variables for API configuration
@@ -17,7 +19,7 @@ export async function fetcher<T>(
   // Construct the full URL with query parameters
   const url = qs.stringifyUrl(
     {
-      url: `${BASE_URL}/${endpoint}`,
+      url: `${BASE_URL.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`,
       query: params,
     },
     { skipEmptyString: true, skipNull: true }
@@ -36,9 +38,9 @@ export async function fetcher<T>(
   // Handle HTTP errors by throwing a descriptive message
   if (!response.ok) {
     const errorBody: CoinGeckoErrorBody = await response.json().catch(() => ({}));
-    throw new Error(
-      `API Error: ${response.status}: ${errorBody.error || JSON.stringify(errorBody)} `
-    );
+    const errorMessage =
+      typeof errorBody.error === 'string' ? errorBody.error : JSON.stringify(errorBody);
+    throw new Error(`API Error: ${response.status}: ${errorMessage}`);
   }
 
   // Return the parsed JSON data
