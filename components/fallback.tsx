@@ -63,3 +63,58 @@ export const TrendingCoinsFallback = () => {
     </div>
   );
 };
+
+export const CategoriesFallback = () => {
+  const dummyData = Array.from({ length: 10 });
+
+  const columns = [
+    {
+      header: 'Category',
+      cellClassName: 'category-cell',
+      cell: () => <div className="category-skeleton skeleton" />,
+    },
+    {
+      header: 'Top Gainers',
+      cellClassName: 'top-gainers-cell',
+      cell: () => (
+        <div className="flex gap-1 py-2">
+          <div className="coin-skeleton skeleton" />
+          <div className="coin-skeleton skeleton" />
+          <div className="coin-skeleton skeleton" />
+        </div>
+      ),
+    },
+    {
+      header: '24h Change',
+      cellClassName: 'change-header-cell',
+      cell: () => (
+        <div className="change-cell">
+          <div className="value-skeleton-sm skeleton" />
+          <div className="change-icon skeleton" />
+        </div>
+      ),
+    },
+    {
+      header: 'Market Cap',
+      cellClassName: 'market-cap-cell',
+      cell: () => <div className="value-skeleton-md skeleton" />,
+    },
+    {
+      header: '24h Volume',
+      cellClassName: 'volume-cell',
+      cell: () => <div className="value-skeleton-lg skeleton" />,
+    },
+  ];
+
+  return (
+    <div id="categories-fallback">
+      <h4>Top Categories</h4>
+      <DataTable
+        data={dummyData}
+        columns={columns}
+        rowKey={(_, index) => index}
+        tableClassName="mt-3"
+      />
+    </div>
+  );
+};

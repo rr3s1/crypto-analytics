@@ -9,7 +9,12 @@ import { formatCurrency } from '@/lib/utils';
 import qs from 'query-string';
 import TrendingCoins from '@/components/home/TrendingCoins';
 import CoinOverview from '@/components/home/CoinOverview';
-import { CoinOverviewFallback, TrendingCoinsFallback } from '@/components/fallback';
+import {
+  CoinOverviewFallback,
+  TrendingCoinsFallback,
+  CategoriesFallback,
+} from '@/components/fallback';
+import Categories from '@/components/home/Categories';
 
 // Configuration for the data table columns
 
@@ -34,7 +39,9 @@ const Page = async (props: NextPageProps) => {
       </section>
 
       <section className="mt-7 w-full space-y-4">
-        <p>Categories</p>
+        <Suspense fallback={<CategoriesFallback />}>
+          <Categories />
+        </Suspense>
       </section>
     </main>
   );
