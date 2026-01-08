@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import {
-  Pagination,
+  Pagination as PaginationContainer,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
@@ -27,7 +27,7 @@ const CoinsPagination = ({ currentPage, totalPages, hasMorePages }: Pagination) 
   const isLastPage = !hasMorePages || currentPage === totalPages;
 
   return (
-    <Pagination id="coins-pagination">
+    <PaginationContainer id="coins-pagination">
       <PaginationContent className="pagination-content">
         {/* Previous Button: Disabled on page 1 */}
         <PaginationItem className="pagination-control prev">
@@ -64,7 +64,7 @@ const CoinsPagination = ({ currentPage, totalPages, hasMorePages }: Pagination) 
           />
         </PaginationItem>
       </PaginationContent>
-    </Pagination>
+    </PaginationContainer>
   );
 };
 export default CoinsPagination;

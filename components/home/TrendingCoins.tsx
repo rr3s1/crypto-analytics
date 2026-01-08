@@ -6,7 +6,7 @@ import { cn, formatCurrency } from '@/lib/utils';
 import { TrendingDown, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 
-const TrendingCoins = async ({ currency }: { currency: string }) => {
+const TrendingCoins = async ({ currency = 'usd' }: { currency?: string }) => {
   const trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('/search/trending', undefined, 300);
 
   // Configuration for the data table columns

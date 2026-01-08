@@ -1,10 +1,19 @@
 import { fetcher } from '@/lib/coingecko.actions';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 import { cn, formatPercentage, formatCurrency } from '@/lib/utils';
 import DataTable from '@/components/DataTable';
 import CoinsPagination from '@/components/CoinsPagination';
+import CoinOverview from '@/components/home/CoinOverview';
+import TrendingCoins from '@/components/home/TrendingCoins';
+import Categories from '@/components/home/Categories';
+import {
+  CoinOverviewFallback,
+  TrendingCoinsFallback,
+  CategoriesFallback,
+} from '@/components/home/fallback';
 
 const Coins = async ({ searchParams }: NextPageProps) => {
   const { page } = await searchParams;
@@ -80,7 +89,23 @@ const Coins = async ({ searchParams }: NextPageProps) => {
   const estimatedTotalPages = currentPage >= 100 ? Math.ceil(currentPage / 100) * 100 + 100 : 100;
 
   return (
-    <main id="coins-page">
+    <main className="main-container">
+      <section className="home-grid">
+        <Suspense fallback={<CoinOverviewFallback />}>
+          <CoinOverview />
+        </Suspense>
+
+        <Suspense fallback={<TrendingCoinsFallback />}>
+          <TrendingCoins />
+        </Suspense>
+      </section>
+
+      <section className="w-full mt-7 space-y-4">
+        <Suspense fallback={<CategoriesFallback />}>
+          <Categories />
+        </Suspense>
+      </section>
+
       <div className="content">
         <h4>All Coins</h4>
 

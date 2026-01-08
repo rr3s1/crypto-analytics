@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24512527-6d56-4c3d-b49b-1b4a47364e26" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/coins/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/CoinsPagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/useCoinGeckoWebSocket.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/fallback.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/fallback.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/CoinOverview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/CoinOverview.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="37" />
+    <option name="cachedIndexableFilesCount" value="42" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -64,6 +65,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\000   APPS\000   A-WEB3 Market\01   crypto-analytics-craft\components\home" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
@@ -104,6 +110,7 @@
       <workItem from="1767514105383" duration="2777000" />
       <workItem from="1767597815046" duration="2626000" />
       <workItem from="1767681922065" duration="1407000" />
+      <workItem from="1767859047313" duration="2471000" />
     </task>
     <servers />
   </component>
