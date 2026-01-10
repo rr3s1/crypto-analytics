@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24512527-6d56-4c3d-b49b-1b4a47364e26" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/coins/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/LiveDataWrapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/coingecko.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/coingecko.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CandlestickChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CandlestickChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LiveDataWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LiveDataWrapper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="44" />
+    <option name="cachedIndexableFilesCount" value="46" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -48,7 +45,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Coin-Details-Page-(Part-1)",
+    "git-widget-placeholder": "Realtime-Chart",
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
@@ -62,7 +59,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "C:\\000   APPS\\000   A-WEB3 Market\\01   crypto-analytics-craft\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
     "ts.external.directory.path": "C:\\000   APPS\\000   A-WEB3 Market\\01   crypto-analytics-craft\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -114,6 +111,7 @@
       <workItem from="1767681922065" duration="1407000" />
       <workItem from="1767859047313" duration="2471000" />
       <workItem from="1767943754312" duration="3666000" />
+      <workItem from="1768033599181" duration="2352000" />
     </task>
     <servers />
   </component>
