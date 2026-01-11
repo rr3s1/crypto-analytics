@@ -9,7 +9,7 @@ import {
   PERIOD_CONFIG,
 } from '@/constants';
 import { CandlestickSeries, createChart, IChartApi, ISeriesApi } from 'lightweight-charts';
-import { fetcher } from '@/lib/coingecko.actions';
+import { fetcher, getCoinGeckoBaseUrl, isCoinGeckoProApi } from '@/lib/coingecko.actions';
 import { convertOHLCData } from '@/lib/utils';
 
 const CandlestickChart = ({
@@ -35,8 +35,7 @@ const CandlestickChart = ({
   const fetchOHLCData = async (selectedPeriod: Period) => {
     try {
       const { days, interval } = PERIOD_CONFIG[selectedPeriod];
-      const isPro = process.env.NEXT_PUBLIC_COINGECKO_BASE_URL?.includes('pro-api') || 
-                    process.env.COINGECKO_BASE_URL?.includes('pro-api');
+      const isPro = isCoinGeckoProApi(getCoinGeckoBaseUrl());
 
       const newData = await fetcher<OHLCData[]>(`/coins/${coinId}/ohlc`, {
         vs_currency: 'usd',
@@ -73,7 +72,7 @@ const CandlestickChart = ({
     const series = chart.addSeries(CandlestickSeries, getCandlestickConfig());
 
     const convertedToSeconds = ohlcData.map(
-      (item) => [Math.floor(item[0] / 1000), item[1], item[2], item[3], item[4]] as OHLCData,
+      (item) => [Math.floor(item[0] / 1000), item[1], item[2], item[3], item[4]] as OHLCData
     );
 
     series.setData(convertOHLCData(convertedToSeconds));
@@ -94,13 +93,14 @@ const CandlestickChart = ({
       chartRef.current = null;
       candleSeriesRef.current = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [height, period]);
 
   useEffect(() => {
     if (!candleSeriesRef.current) return;
 
     const convertedToSeconds = ohlcData.map(
-      (item) => [Math.floor(item[0] / 1000), item[1], item[2], item[3], item[4]] as OHLCData,
+      (item) => [Math.floor(item[0] / 1000), item[1], item[2], item[3], item[4]] as OHLCData
     );
 
     let merged: OHLCData[];
@@ -138,7 +138,7 @@ const CandlestickChart = ({
         <div className="flex-1">{children}</div>
 
         <div className="button-group">
-          <span className="text-sm mx-2 font-medium text-purple-100/50">Period:</span>
+          <span className="mx-2 text-sm font-medium text-purple-100/50">Period:</span>
           {PERIOD_BUTTONS.map(({ value, label }) => (
             <button
               key={value}
@@ -153,7 +153,7 @@ const CandlestickChart = ({
 
         {liveInterval && (
           <div className="button-group">
-            <span className="text-sm mx-2 font-medium text-purple-100/50">Update Frequency:</span>
+            <span className="mx-2 text-sm font-medium text-purple-100/50">Update Frequency:</span>
             {LIVE_INTERVAL_BUTTONS.map(({ value, label }) => (
               <button
                 key={value}

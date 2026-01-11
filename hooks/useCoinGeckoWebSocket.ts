@@ -32,9 +32,18 @@ export const useCoinGeckoWebSocket = ({
         return;
       }
       if (msg.type === 'confirm_subscription') {
-        const { channel } = JSON.parse(msg?.identifier ?? '');
-
-        subscribed.current.add(channel);
+        const identifier = msg?.identifier;
+        if (typeof identifier === 'string' && identifier.trim().length > 0) {
+          try {
+            const parsed = JSON.parse(identifier) as { channel?: unknown };
+            const channel = parsed?.channel;
+            if (typeof channel === 'string' && channel.trim().length > 0) {
+              subscribed.current.add(channel);
+            }
+          } catch (error) {
+            console.error('[useCoinGeckoWebSocket] Failed to parse identifier', error);
+          }
+        }
       }
       if (msg.c === 'C1') {
         setPrice({
@@ -80,6 +89,7 @@ export const useCoinGeckoWebSocket = ({
     ws.onclose = () => setIsWsReady(false);
 
     ws.onerror = (error) => {
+      console.error('[useCoinGeckoWebSocket] WebSocket error', error);
       setIsWsReady(false);
     };
 

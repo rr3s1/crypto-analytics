@@ -18,9 +18,8 @@ const Header = () => {
         <nav>
           <Link
             href="/"
-            className={cn('nav-link', {
+            className={cn('nav-link', 'is-home', {
               'is-active': pathname === '/',
-              'is-home': true,
             })}
           >
             Home

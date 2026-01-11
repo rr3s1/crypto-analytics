@@ -74,6 +74,8 @@ const LiveDataWrapper = ({ children, coinId, poolId, coin, coinOHLCData }: LiveD
 
       <Separator className="divider" />
 
+      {children ? <div className="mt-4">{children}</div> : null}
+
       {tradeColumns && (
         <div className="trades">
           <h4>Recent Trades</h4>

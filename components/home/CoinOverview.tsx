@@ -19,6 +19,14 @@ const CoinOverview = async () => {
       }),
     ]);
 
+    const firstNonEmptyString = (value: unknown): string | null =>
+      typeof value === 'string' && value.trim().length > 0 ? value : null;
+
+    const firstFromStringArray = (value: unknown): string | null => {
+      if (!Array.isArray(value) || value.length === 0) return null;
+      return firstNonEmptyString(value[0]);
+    };
+
     const coinDetails = [
       {
         label: 'Market Cap',
@@ -35,35 +43,41 @@ const CoinOverview = async () => {
       {
         label: 'Website',
         value: '-',
-        link: coin.links.homepage[0],
+        link: firstFromStringArray(coin.links?.homepage),
         linkText: 'Homepage',
       },
       {
         label: 'Explorer',
         value: '-',
-        link: coin.links.blockchain_site[0],
+        link: firstFromStringArray(coin.links?.blockchain_site),
         linkText: 'Explorer',
       },
       {
         label: 'Community',
         value: '-',
-        link: coin.links.subreddit_url,
+        link: firstNonEmptyString(coin.links?.subreddit_url),
         linkText: 'Community',
       },
     ];
 
     return (
       <>
-        {/* Left Column: Bitcoin Header + Full-width Chart */}
-        <div id="coin-overview" className="col-span-1 xl:col-span-2">
-          <CoinHeader
-            name={coin.name}
-            image={coin.image.large}
-            livePrice={coin.market_data.current_price.usd}
-            livePriceChangePercentage24h={coin.market_data.price_change_percentage_24h_in_currency.usd}
-            priceChangePercentage30d={coin.market_data.price_change_percentage_30d_in_currency.usd}
-            priceChange24h={coin.market_data.price_change_24h_in_currency.usd}
-          />
+        {/* Left Column: Bitcoin Details + Chart (separate sections) */}
+        <div id="coin-overview" className="col-span-1 space-y-6 xl:col-span-2">
+          <section className="bg-dark-500 rounded-xl p-6">
+            <CoinHeader
+              name={coin.name}
+              image={coin.image.large}
+              livePrice={coin.market_data.current_price.usd}
+              livePriceChangePercentage24h={
+                coin.market_data.price_change_percentage_24h_in_currency.usd
+              }
+              priceChangePercentage30d={
+                coin.market_data.price_change_percentage_30d_in_currency.usd
+              }
+              priceChange24h={coin.market_data.price_change_24h_in_currency.usd}
+            />
+          </section>
 
           <CandlestickChart data={coinOHLCData} coinId="bitcoin">
             <h4 className="text-xl font-semibold">Trend Overview</h4>
@@ -83,10 +97,15 @@ const CoinOverview = async () => {
             <ul className="grid grid-cols-2 gap-3">
               {coinDetails.map(({ label, value, link, linkText }, index) => (
                 <li key={index} className="bg-dark-400 flex flex-col gap-2 rounded-lg p-4">
-                  <p className="text-purple-100 text-sm">{label}</p>
+                  <p className="text-sm text-purple-100">{label}</p>
                   {link ? (
                     <div className="flex items-center gap-1 text-green-500">
-                      <Link href={link} target="_blank" className="truncate text-sm">
+                      <Link
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="truncate text-sm"
+                      >
                         {linkText || label}
                       </Link>
                       <ArrowUpRight size={14} />

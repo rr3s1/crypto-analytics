@@ -1,30 +1,41 @@
-'use server';
-
 import qs from 'query-string';
 
-const BASE_URL = process.env.COINGECKO_BASE_URL;
-const API_KEY = process.env.COINGECKO_API_KEY;
+export const getCoinGeckoBaseUrl = () =>
+  process.env.NEXT_PUBLIC_COINGECKO_BASE_URL ?? process.env.COINGECKO_BASE_URL ?? '';
 
-if (!BASE_URL) throw new Error('Could not get base url');
-if (!API_KEY) throw new Error('Could not get api key');
+export const isCoinGeckoProApi = (baseUrl?: string) => (baseUrl ?? '').includes('pro-api');
 
 export async function fetcher<T>(
   endpoint: string,
   params?: QueryParams,
-  revalidate = 60,
+  revalidate = 60
 ): Promise<T> {
+  const baseUrl = getCoinGeckoBaseUrl();
+  const apiKey = process.env.NEXT_PUBLIC_COINGECKO_API_KEY ?? process.env.COINGECKO_API_KEY;
+
+  if (!baseUrl) {
+    throw new Error(
+      '[coingecko.actions] Missing COINGECKO_BASE_URL / NEXT_PUBLIC_COINGECKO_BASE_URL'
+    );
+  }
+  if (!apiKey) {
+    throw new Error(
+      '[coingecko.actions] Missing COINGECKO_API_KEY / NEXT_PUBLIC_COINGECKO_API_KEY'
+    );
+  }
+
   const url = qs.stringifyUrl(
     {
-      url: `${BASE_URL.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`,
+      url: `${baseUrl.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`,
       query: params,
     },
-    { skipEmptyString: true, skipNull: true },
+    { skipEmptyString: true, skipNull: true }
   );
 
-  const isPro = BASE_URL.includes('pro-api');
+  const isPro = isCoinGeckoProApi(baseUrl);
   const response = await fetch(url, {
     headers: {
-      [isPro ? 'x-cg-pro-api-key' : 'x-cg-demo-api-key']: API_KEY,
+      [isPro ? 'x-cg-pro-api-key' : 'x-cg-demo-api-key']: apiKey,
       'Content-Type': 'application/json',
     } as Record<string, string>,
     next: { revalidate },
@@ -33,7 +44,14 @@ export async function fetcher<T>(
   if (!response.ok) {
     const errorBody: CoinGeckoErrorBody = await response.json().catch(() => ({}));
 
-    throw new Error(`API Error: ${response.status}: ${errorBody.error || response.statusText} `);
+    console.error('[coingecko.actions] API Error', {
+      endpoint,
+      status: response.status,
+      statusText: response.statusText,
+      errorBody,
+    });
+
+    throw new Error(`API Error: ${response.status}: ${errorBody.error || response.statusText}`);
   }
 
   return response.json();
@@ -42,7 +60,7 @@ export async function fetcher<T>(
 export async function getPools(
   id: string,
   network?: string | null,
-  contractAddress?: string | null,
+  contractAddress?: string | null
 ): Promise<PoolData> {
   const fallback: PoolData = {
     id: '',
@@ -54,7 +72,7 @@ export async function getPools(
   if (network && contractAddress) {
     try {
       const poolData = await fetcher<{ data: PoolData[] }>(
-        `/onchain/networks/${network}/tokens/${contractAddress}/pools`,
+        `/onchain/networks/${network}/tokens/${contractAddress}/pools`
       );
 
       return poolData.data?.[0] ?? fallback;

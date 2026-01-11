@@ -42,7 +42,7 @@ export const getCandlestickConfig = (): CandlestickSeriesPartialOptions => ({
 
 export const getChartConfig = (
   height: number,
-  timeVisible: boolean = true,
+  timeVisible: boolean = true
 ): DeepPartial<ChartOptions> => ({
   width: 0,
   height,

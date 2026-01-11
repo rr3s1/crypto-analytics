@@ -1,9 +1,8 @@
-"use client";
+'use client';
 import React from 'react';
 import {
   Pagination as PaginationContainer,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,

@@ -4,6 +4,18 @@ import { TrendingDown, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 
+type LiveCoinHeaderProps = {
+  name: string;
+  image: string;
+  livePrice?: number | null;
+  livePriceChangePercentage24h?: number | null;
+  priceChangePercentage30d?: number | null;
+  priceChange24h?: number | null;
+};
+
+const isFiniteNumber = (value: unknown): value is number =>
+  typeof value === 'number' && Number.isFinite(value);
+
 const CoinHeader = ({
   livePriceChangePercentage24h,
   priceChangePercentage30d,
@@ -12,9 +24,10 @@ const CoinHeader = ({
   livePrice,
   priceChange24h,
 }: LiveCoinHeaderProps) => {
-  const isTrendingUp = livePriceChangePercentage24h > 0;
-  const isThirtyDayUp = priceChangePercentage30d > 0;
-  const isPriceChangeUp = priceChange24h > 0;
+  const isTrendingUp =
+    isFiniteNumber(livePriceChangePercentage24h) && livePriceChangePercentage24h > 0;
+  const isThirtyDayUp = isFiniteNumber(priceChangePercentage30d) && priceChangePercentage30d > 0;
+  const isPriceChangeUp = isFiniteNumber(priceChange24h) && priceChange24h > 0;
 
   const stats = [
     {
@@ -48,9 +61,11 @@ const CoinHeader = ({
         <Image src={image} alt={name} width={77} height={77} />
 
         <div className="price-row">
-          <h1>{formatCurrency(livePrice)}</h1>
+          <h1>{isFiniteNumber(livePrice) ? formatCurrency(livePrice) : '-'}</h1>
           <Badge className={cn('badge', isTrendingUp ? 'badge-up' : 'badge-down')}>
-            {formatPercentage(livePriceChangePercentage24h)}
+            {isFiniteNumber(livePriceChangePercentage24h)
+              ? formatPercentage(livePriceChangePercentage24h)
+              : '-'}
             {isTrendingUp ? <TrendingUp /> : <TrendingDown />}
             (24h)
           </Badge>
@@ -68,7 +83,7 @@ const CoinHeader = ({
                 'text-red-500': !stat.isUp,
               })}
             >
-              <p>{stat.formatter(stat.value)}</p>
+              <p>{isFiniteNumber(stat.value) ? stat.formatter(stat.value) : '-'}</p>
               {stat.showIcon &&
                 (stat.isUp ? (
                   <TrendingUp width={16} height={16} />
