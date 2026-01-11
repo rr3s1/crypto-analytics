@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24512527-6d56-4c3d-b49b-1b4a47364e26" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/components/CoinHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Converter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CandlestickChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CandlestickChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/coins/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/coins/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/LiveDataWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LiveDataWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +49,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Realtime-Chart",
+    "git-widget-placeholder": "Coin-Details-Page-(Part-2)",
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
