@@ -812,27 +812,7 @@
   }
 
   #coin-overview {
-    @apply bg-dark-500 h-full w-full rounded-xl px-2 xl:col-span-2;
-
-    .header {
-      @apply mb-2 flex flex-1 gap-2 md:gap-3;
-
-      img {
-        @apply h-10 w-10 md:h-14 md:w-14;
-      }
-
-      .info {
-        @apply flex flex-col;
-
-        p {
-          @apply flex w-fit text-xs text-purple-100 md:text-sm;
-        }
-
-        h1 {
-          @apply text-xl font-semibold md:text-2xl;
-        }
-      }
-    }
+    @apply h-full w-full xl:col-span-2;
   }
 
   #coins-pagination {
