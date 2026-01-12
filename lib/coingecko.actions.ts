@@ -57,6 +57,62 @@ export async function fetcher<T>(
   return response.json();
 }
 
+type CoinSearchResponse = {
+  coins: Array<{
+    id: string;
+    name: string;
+    symbol: string;
+    market_cap_rank: number | null;
+    thumb: string;
+    large: string;
+  }>;
+};
+
+export async function searchCoins(query: string): Promise<SearchCoin[]> {
+  const cleaned = query.trim();
+  if (!cleaned) return [];
+
+  const search = await fetcher<CoinSearchResponse>('/search', { query: cleaned }, 60);
+  const topMatches = (search.coins ?? []).slice(0, 10);
+
+  const ids = topMatches.map((coin) => coin.id).filter(Boolean);
+  if (ids.length === 0) return [];
+
+  let markets: CoinMarketData[] = [];
+  try {
+    markets = await fetcher<CoinMarketData[]>(
+      '/coins/markets',
+      {
+        vs_currency: 'usd',
+        ids: ids.join(','),
+        price_change_percentage: '24h',
+      },
+      60
+    );
+  } catch {
+    markets = [];
+  }
+
+  const marketById = new Map(markets.map((m) => [m.id, m]));
+
+  return topMatches.map((coin) => {
+    const market = marketById.get(coin.id);
+
+    return {
+      id: coin.id,
+      name: coin.name,
+      symbol: coin.symbol,
+      market_cap_rank: coin.market_cap_rank ?? null,
+      thumb: coin.thumb,
+      large: coin.large,
+      data: {
+        price: market?.current_price,
+        price_change_percentage_24h: market?.price_change_percentage_24h ?? 0,
+      },
+    };
+  });
+}
+
 export async function getPools(
   id: string,
   network?: string | null,
