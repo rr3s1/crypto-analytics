@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
 import { formatCurrency } from '@/lib/utils';
@@ -16,6 +16,11 @@ import {
 const Converter = ({ symbol, icon, priceList }: ConverterProps) => {
   const [currency, setCurrency] = useState('usd');
   const [amount, setAmount] = useState('10');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const convertedPrice = (parseFloat(amount) || 0) * (priceList[currency] || 0);
   const safeSymbol = symbol?.toUpperCase?.() ?? '';
@@ -50,20 +55,31 @@ const Converter = ({ symbol, icon, priceList }: ConverterProps) => {
         <div className="output-wrapper">
           <p>{formatCurrency(convertedPrice, 2, currency, false)}</p>
 
-          <Select value={currency} onValueChange={setCurrency}>
-            <SelectTrigger className="select-trigger">
-              <SelectValue placeholder="Select" className="select-value">
+          {mounted ? (
+            <Select value={currency} onValueChange={setCurrency}>
+              <SelectTrigger className="select-trigger">
+                <SelectValue placeholder="Select" className="select-value">
+                  {currency.toUpperCase()}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent className="select-content" data-converter>
+                {Object.keys(priceList).map((currencyCode) => (
+                  <SelectItem value={currencyCode} key={currencyCode} className="select-item">
+                    {currencyCode.toUpperCase()}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          ) : (
+            <div
+              className="select-trigger pointer-events-none opacity-80"
+              aria-hidden="true"
+            >
+              <span className="select-value text-xs font-semibold text-purple-100">
                 {currency.toUpperCase()}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent className="select-content" data-converter>
-              {Object.keys(priceList).map((currencyCode) => (
-                <SelectItem value={currencyCode} key={currencyCode} className="select-item">
-                  {currencyCode.toUpperCase()}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>
