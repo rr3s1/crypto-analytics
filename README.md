@@ -21,7 +21,7 @@
 
 
    <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/watch?v=-vsh_GxC-vg&t=1s" target="_blank"><b>JavaScript Mastery</b></a> YouTube.
+     Build this project step by step with in-depth detailed tutorial on <a href="https://www.youtube.com/watch?v=-vsh_GxC-vg&t=1s" target="_blank"><b>JavaScript Mastery</b></a> YouTube.
     </div>
 </div>
 
